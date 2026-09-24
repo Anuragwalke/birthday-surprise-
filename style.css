@@ -1,0 +1,2172 @@
+/* =====================================================
+   PREMIUM DJ BIRTHDAY WEBSITE
+   OM ❤️
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background: #050505;
+    color: #fff;
+
+    font-family: "Inter", sans-serif;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+.scene {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(1.06);
+
+    transition:
+        opacity 1s cubic-bezier(.77,0,.18,1),
+        transform 1.2s cubic-bezier(.77,0,.18,1);
+
+    z-index: 1;
+}
+
+.scene.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform: scale(1);
+
+    z-index: 5;
+}
+
+
+/* =====================================================
+   NOISE
+===================================================== */
+
+.noise {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 999;
+
+    pointer-events: none;
+
+    opacity: .045;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+
+/* =====================================================
+   AMBIENT LIGHT
+===================================================== */
+
+.ambient {
+    position: fixed;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    opacity: .15;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.ambient-1 {
+    background: #ff007f;
+
+    top: -250px;
+    left: -150px;
+
+    animation: ambientMove 8s infinite alternate;
+}
+
+.ambient-2 {
+    background: #7b00ff;
+
+    right: -200px;
+    bottom: -200px;
+
+    animation: ambientMove 10s infinite alternate-reverse;
+}
+
+.ambient-3 {
+    background: #00d9ff;
+
+    left: 40%;
+    top: 40%;
+
+    opacity: .08;
+}
+
+@keyframes ambientMove {
+
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(100px, 80px);
+    }
+
+}
+
+
+/* =====================================================
+   TOP UI
+===================================================== */
+
+.top-ui {
+    position: fixed;
+
+    top: 28px;
+    left: 35px;
+    right: 35px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    z-index: 100;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    opacity: .7;
+}
+
+.brand-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #ff1688;
+
+    box-shadow: 0 0 15px #ff1688;
+
+    animation: dotPulse 1.5s infinite;
+}
+
+@keyframes dotPulse {
+
+    50% {
+        transform: scale(1.6);
+        opacity: .5;
+    }
+
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    opacity: .65;
+}
+
+.counter-line {
+    width: 30px;
+    height: 1px;
+
+    background: white;
+
+    opacity: .4;
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.progress {
+    position: fixed;
+
+    top: 55px;
+    left: 35px;
+    right: 35px;
+
+    height: 1px;
+
+    z-index: 100;
+}
+
+.progress-line {
+    width: 100%;
+    height: 1px;
+
+    background: rgba(255,255,255,.12);
+}
+
+.progress-fill {
+    width: 12.5%;
+    height: 100%;
+
+    background: #fff;
+
+    box-shadow: 0 0 10px white;
+
+    transition: width .8s ease;
+}
+
+
+/* =====================================================
+   NEXT BUTTON
+===================================================== */
+
+.next-button {
+    position: fixed;
+
+    right: 35px;
+    bottom: 30px;
+
+    height: 52px;
+
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    border-radius: 100px;
+
+    background: rgba(255,255,255,.06);
+
+    color: white;
+
+    backdrop-filter: blur(15px);
+
+    cursor: pointer;
+
+    z-index: 200;
+
+    transition:
+        .4s ease;
+}
+
+.next-text {
+    font-family: "DM Mono", monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+.next-arrow {
+    width: 25px;
+    height: 25px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+
+    color: black;
+
+    font-size: 13px;
+
+    transition: .3s;
+}
+
+.next-button:hover {
+    background: white;
+
+    color: black;
+
+    transform: translateY(-4px);
+}
+
+.next-button:hover .next-arrow {
+    transform: translateX(4px);
+}
+
+.next-button:active {
+    transform: scale(.94);
+}
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+.music-indicator {
+    position: fixed;
+
+    left: 35px;
+    bottom: 35px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    opacity: .45;
+
+    z-index: 100;
+}
+
+.music-bars {
+    display: flex;
+
+    align-items: end;
+
+    gap: 2px;
+
+    height: 14px;
+}
+
+.music-bars i {
+    width: 2px;
+
+    height: 7px;
+
+    background: white;
+
+    animation: musicBars .7s infinite alternate;
+}
+
+.music-bars i:nth-child(2) {
+    animation-delay: .15s;
+}
+
+.music-bars i:nth-child(3) {
+    animation-delay: .3s;
+}
+
+.music-bars i:nth-child(4) {
+    animation-delay: .45s;
+}
+
+@keyframes musicBars {
+
+    from {
+        height: 4px;
+    }
+
+    to {
+        height: 14px;
+    }
+
+}
+
+
+/* =====================================================
+   GENERAL TEXT
+===================================================== */
+
+.section-label {
+    font-family: "DM Mono", monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color: rgba(255,255,255,.5);
+
+    margin-bottom: 25px;
+}
+
+.scene-copy,
+.thunder-content p,
+.laser-content p {
+    margin-top: 25px;
+
+    color: rgba(255,255,255,.55);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   SCENE 1
+===================================================== */
+
+.scene-1 {
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255,0,128,.12),
+            transparent 35%
+        ),
+        #050505;
+}
+
+.hero-glow {
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    border-radius: 50%;
+
+    background: rgba(255,0,128,.15);
+
+    filter: blur(100px);
+
+    animation: heroGlow 5s infinite alternate;
+}
+
+@keyframes heroGlow {
+
+    to {
+        transform: scale(1.3);
+        opacity: .5;
+    }
+
+}
+
+.hero-content {
+    position: relative;
+
+    text-align: center;
+
+    z-index: 5;
+}
+
+.eyebrow {
+    font-family: "DM Mono", monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+
+    color: rgba(255,255,255,.5);
+}
+
+.tiny-line {
+    width: 45px;
+    height: 1px;
+
+    background: #ff1688;
+
+    margin: 22px auto;
+}
+
+.pre-title {
+    font-size: 12px;
+
+    letter-spacing: 9px;
+
+    color: rgba(255,255,255,.5);
+
+    margin-bottom: 10px;
+}
+
+.hero-title {
+    font-size: clamp(60px, 11vw, 145px);
+
+    line-height: .82;
+
+    letter-spacing: -7px;
+
+    font-weight: 900;
+}
+
+.hero-title span {
+    display: block;
+
+    color: #ff1688;
+
+    text-shadow:
+        0 0 30px rgba(255,0,128,.7),
+        0 0 80px rgba(255,0,128,.4);
+}
+
+.hero-description {
+    margin-top: 35px;
+
+    color: rgba(255,255,255,.55);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+.hero-orbit {
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%,-50%);
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+.orbit-ring {
+    position: absolute;
+
+    inset: 0;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 50%;
+}
+
+.ring-1 {
+    animation: orbitSpin 12s linear infinite;
+}
+
+.ring-2 {
+    inset: 30px;
+
+    border-color: rgba(255,0,128,.2);
+
+    animation: orbitSpin 8s linear infinite reverse;
+}
+
+@keyframes orbitSpin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+.orbit-name {
+    position: absolute;
+
+    width: 35px;
+    height: 35px;
+
+    left: -17px;
+    top: 50%;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ff1688;
+
+    font-weight: 900;
+
+    box-shadow: 0 0 30px #ff1688;
+}
+
+.scroll-hint {
+    position: absolute;
+
+    bottom: 35px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    align-items: center;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    opacity: .35;
+}
+
+.scroll-arrow {
+    animation: arrowDown 1.5s infinite;
+}
+
+@keyframes arrowDown {
+
+    50% {
+        transform: translateY(5px);
+    }
+
+}
+
+
+/* =====================================================
+   SCENE 2 — DJ
+===================================================== */
+
+.scene-2 {
+    background:
+        radial-gradient(
+            circle at center,
+            #190024,
+            #040006 65%
+        );
+}
+
+.dj-content {
+    width: min(1000px, 90vw);
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.dj-content h2 {
+    font-size: clamp(45px, 7vw, 90px);
+
+    line-height: .9;
+
+    letter-spacing: -4px;
+}
+
+.dj-content h2 strong {
+    color: #b400ff;
+
+    text-shadow:
+        0 0 25px #b400ff,
+        0 0 70px rgba(180,0,255,.5);
+}
+
+.dj-machine {
+    width: min(800px, 90vw);
+
+    height: 210px;
+
+    margin: 35px auto 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 18px;
+}
+
+.deck {
+    width: 200px;
+    height: 170px;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1a1a1e,
+            #070709
+        );
+
+    border: 1px solid rgba(255,255,255,.1);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.6);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vinyl {
+    width: 130px;
+    height: 130px;
+
+    border-radius: 50%;
+
+    background:
+        repeating-radial-gradient(
+            circle,
+            #050505 0px,
+            #050505 3px,
+            #171717 4px,
+            #050505 6px
+        );
+
+    position: relative;
+
+    animation: vinylSpin 3s linear infinite;
+}
+
+.vinyl::after {
+    content: "";
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,.1);
+}
+
+.vinyl-center {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%,-50%);
+
+    width: 35px;
+    height: 35px;
+
+    border-radius: 50%;
+
+    background: #b400ff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    box-shadow: 0 0 20px #b400ff;
+}
+
+@keyframes vinylSpin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+.mixer {
+    width: 220px;
+    height: 190px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #202025,
+            #09090c
+        );
+
+    border: 1px solid rgba(255,255,255,.1);
+
+    padding: 20px;
+}
+
+.mixer-screen {
+    height: 45px;
+
+    border-radius: 5px;
+
+    background: #080d0b;
+
+    border: 1px solid #273f35;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 10px;
+
+    font-family: "DM Mono", monospace;
+
+    color: #41ff9a;
+}
+
+.mixer-screen span {
+    font-size: 7px;
+}
+
+.mixer-screen strong {
+    font-size: 12px;
+}
+
+.mixer-knobs {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 15px;
+}
+
+.mixer-knobs i {
+    width: 15px;
+    height: 15px;
+
+    border-radius: 50%;
+
+    border: 2px solid #777;
+
+    background: #151515;
+}
+
+.mixer-sliders {
+    display: flex;
+
+    justify-content: space-around;
+
+    margin-top: 20px;
+}
+
+.mixer-sliders b {
+    display: block;
+
+    width: 2px;
+    height: 45px;
+
+    background: #777;
+
+    position: relative;
+}
+
+.mixer-sliders b::after {
+    content: "";
+
+    position: absolute;
+
+    width: 10px;
+    height: 18px;
+
+    left: -4px;
+    top: 10px;
+
+    background: #b400ff;
+
+    box-shadow: 0 0 10px #b400ff;
+}
+
+.equalizer {
+    display: flex;
+
+    align-items: end;
+    justify-content: center;
+
+    gap: 5px;
+
+    height: 50px;
+}
+
+.equalizer span {
+    width: 5px;
+
+    height: 15px;
+
+    background: #b400ff;
+
+    box-shadow: 0 0 10px #b400ff;
+
+    animation: eq .5s infinite alternate;
+}
+
+.equalizer span:nth-child(2n) {
+    animation-delay: .2s;
+}
+
+.equalizer span:nth-child(3n) {
+    animation-delay: .35s;
+}
+
+@keyframes eq {
+
+    to {
+        height: 45px;
+    }
+
+}
+
+
+/* =====================================================
+   SCENE 3 — LIGHTNING
+===================================================== */
+
+.scene-3 {
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            #09263a,
+            #020508 65%
+        );
+}
+
+.storm-clouds {
+    position: absolute;
+
+    inset: -20%;
+
+    background:
+        radial-gradient(
+            ellipse at 30% 40%,
+            rgba(50,130,180,.15),
+            transparent 30%
+        ),
+        radial-gradient(
+            ellipse at 70% 50%,
+            rgba(80,60,200,.15),
+            transparent 30%
+        );
+
+    filter: blur(40px);
+
+    animation: stormMove 5s infinite alternate;
+}
+
+@keyframes stormMove {
+
+    to {
+        transform: scale(1.2) translateX(50px);
+    }
+
+}
+
+.thunder-content {
+    position: relative;
+
+    z-index: 5;
+
+    text-align: center;
+}
+
+.thunder-symbol {
+    font-size: 100px;
+
+    margin-bottom: 15px;
+
+    filter:
+        drop-shadow(0 0 25px #5ce7ff)
+        drop-shadow(0 0 60px #008cff);
+
+    animation: thunderPulse 1.7s infinite;
+}
+
+@keyframes thunderPulse {
+
+    0%,
+    85%,
+    100% {
+        transform: scale(1);
+        filter:
+            drop-shadow(0 0 15px #5ce7ff);
+    }
+
+    88% {
+        transform: scale(1.25);
+        filter:
+            brightness(2)
+            drop-shadow(0 0 60px white);
+    }
+
+    90% {
+        opacity: .2;
+    }
+
+    92% {
+        opacity: 1;
+    }
+
+}
+
+.thunder-content h2 {
+    font-size: clamp(55px, 9vw, 110px);
+
+    line-height: .85;
+
+    letter-spacing: -5px;
+}
+
+.thunder-content h2 strong {
+    color: #6eeaff;
+
+    text-shadow:
+        0 0 25px #00bfff,
+        0 0 70px rgba(0,180,255,.5);
+}
+
+.flash {
+    position: absolute;
+
+    inset: 0;
+
+    background: white;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    animation: flashScreen 2.4s infinite;
+}
+
+@keyframes flashScreen {
+
+    0%,
+    85%,
+    100% {
+        opacity: 0;
+    }
+
+    88% {
+        opacity: .18;
+    }
+
+    89% {
+        opacity: 0;
+    }
+
+    92% {
+        opacity: .3;
+    }
+
+    93% {
+        opacity: 0;
+    }
+
+}
+
+
+/* =====================================================
+   SCENE 4 — LASERS
+===================================================== */
+
+.scene-4 {
+    background:
+        radial-gradient(
+            ellipse at bottom,
+            #250035,
+            #030004 70%
+        );
+}
+
+.laser-stage {
+    position: absolute;
+
+    inset: 0;
+
+    perspective: 500px;
+}
+
+.laser-beam {
+    position: absolute;
+
+    bottom: -20%;
+
+    left: 50%;
+
+    width: 3px;
+    height: 120%;
+
+    transform-origin: bottom;
+
+    background: #ff1a9d;
+
+    box-shadow:
+        0 0 8px #ff1a9d,
+        0 0 30px #ff1a9d,
+        0 0 80px rgba(255,0,150,.8);
+
+    opacity: .8;
+
+    animation: laserSwing 3s infinite alternate ease-in-out;
+}
+
+.l1 {
+    transform: rotate(-65deg);
+}
+
+.l2 {
+    transform: rotate(-48deg);
+    animation-delay: -.3s;
+}
+
+.l3 {
+    transform: rotate(-30deg);
+    animation-delay: -.6s;
+}
+
+.l4 {
+    transform: rotate(-10deg);
+    animation-delay: -.9s;
+}
+
+.l5 {
+    transform: rotate(15deg);
+    animation-delay: -1.2s;
+}
+
+.l6 {
+    transform: rotate(35deg);
+    animation-delay: -1.5s;
+}
+
+.l7 {
+    transform: rotate(55deg);
+    animation-delay: -1.8s;
+}
+
+@keyframes laserSwing {
+
+    from {
+        transform:
+            rotate(-35deg)
+            scaleY(.8);
+        opacity: .35;
+    }
+
+    to {
+        transform:
+            rotate(35deg)
+            scaleY(1.1);
+        opacity: 1;
+    }
+
+}
+
+.laser-floor {
+    position: absolute;
+
+    left: -10%;
+    right: -10%;
+    bottom: -35%;
+
+    height: 60%;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 60px,
+            rgba(255,0,180,.15) 61px
+        );
+
+    transform:
+        perspective(300px)
+        rotateX(65deg);
+
+    box-shadow:
+        0 -20px 100px rgba(255,0,180,.2);
+}
+
+.laser-content {
+    position: relative;
+
+    z-index: 5;
+
+    text-align: center;
+}
+
+.laser-content h2 {
+    font-size: clamp(42px, 7vw, 90px);
+
+    line-height: .9;
+
+    letter-spacing: -4px;
+}
+
+.laser-content h2 strong {
+    color: #ff1a9d;
+
+    text-shadow:
+        0 0 25px #ff1a9d,
+        0 0 70px rgba(255,0,150,.5);
+}
+
+
+/* =====================================================
+   SCENE 5 — BASS
+===================================================== */
+
+.scene-5 {
+    background:
+        radial-gradient(
+            circle,
+            #310900,
+            #080100 65%
+        );
+}
+
+.bass-circle {
+    position: absolute;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,90,0,.25);
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%,-50%);
+
+    animation: bassWave 2.5s infinite;
+}
+
+.circle-1 {
+    width: 300px;
+    height: 300px;
+}
+
+.circle-2 {
+    width: 500px;
+    height: 500px;
+
+    animation-delay: .5s;
+}
+
+.circle-3 {
+    width: 750px;
+    height: 750px;
+
+    animation-delay: 1s;
+}
+
+@keyframes bassWave {
+
+    from {
+        transform: translate(-50%,-50%) scale(.5);
+
+        opacity: .8;
+    }
+
+    to {
+        transform: translate(-50%,-50%) scale(1.2);
+
+        opacity: 0;
+    }
+
+}
+
+.disco {
+    position: absolute;
+
+    top: 12%;
+
+    width: 110px;
+    height: 110px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #666,
+            #eee,
+            #333,
+            #fff
+        );
+
+    box-shadow:
+        0 0 40px rgba(255,255,255,.3),
+        0 0 100px rgba(255,100,0,.2);
+
+    animation: discoRotate 5s linear infinite;
+}
+
+.disco-grid {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            transparent 0 8px,
+            rgba(0,0,0,.3) 9px 12px
+        );
+
+    opacity: .7;
+}
+
+.disco-highlight {
+    position: absolute;
+
+    width: 30px;
+    height: 15px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    top: 20px;
+    left: 25px;
+
+    filter: blur(3px);
+
+    opacity: .8;
+}
+
+@keyframes discoRotate {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+.bass-content {
+    position: relative;
+
+    z-index: 5;
+
+    text-align: center;
+}
+
+.fire-icon {
+    font-size: 65px;
+
+    margin-bottom: 15px;
+
+    animation: fireBounce .7s infinite alternate;
+}
+
+@keyframes fireBounce {
+
+    to {
+        transform: scale(1.2) translateY(-8px);
+    }
+
+}
+
+.bass-content h2 {
+    font-size: clamp(45px, 8vw, 100px);
+
+    line-height: .85;
+
+    letter-spacing: -5px;
+}
+
+.bass-content h2 strong {
+    color: #ff4d00;
+
+    text-shadow:
+        0 0 25px #ff4d00,
+        0 0 70px rgba(255,50,0,.6);
+}
+
+.bass-line {
+    display: inline-block;
+
+    margin-top: 30px;
+
+    padding: 10px 25px;
+
+    border: 1px solid rgba(255,100,0,.5);
+
+    border-radius: 50px;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+
+    color: #ff8a5c;
+}
+
+.fire-particle {
+    position: absolute;
+
+    font-size: 25px;
+
+    color: #ff7200;
+
+    animation: particleFloat 4s infinite ease-in;
+}
+
+.fp1 {
+    left: 10%;
+    bottom: 0;
+}
+
+.fp2 {
+    left: 25%;
+    bottom: -10%;
+    animation-delay: 1s;
+}
+
+.fp3 {
+    left: 40%;
+    bottom: -20%;
+    animation-delay: 2s;
+}
+
+.fp4 {
+    left: 60%;
+    bottom: -5%;
+    animation-delay: .5s;
+}
+
+.fp5 {
+    left: 78%;
+    bottom: -15%;
+    animation-delay: 1.5s;
+}
+
+.fp6 {
+    left: 90%;
+    bottom: -5%;
+    animation-delay: 2.5s;
+}
+
+@keyframes particleFloat {
+
+    from {
+        transform:
+            translateY(0)
+            rotate(0);
+
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    to {
+        transform:
+            translateY(-100vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+
+}
+
+
+/* =====================================================
+   MEMORY SCENES
+===================================================== */
+
+.memory-scene {
+    background: #080709;
+}
+
+.memory-bg {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(255,0,128,.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(130,0,255,.12),
+            transparent 30%
+        );
+}
+
+.memory-bg-2 {
+    background:
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(0,200,255,.1),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 20% 70%,
+            rgba(255,0,128,.12),
+            transparent 30%
+        );
+}
+
+.memory-content {
+    width: min(1200px, 90vw);
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.memory-heading {
+    text-align: left;
+
+    margin-bottom: 25px;
+}
+
+.memory-heading h2 {
+    font-size: clamp(40px, 6vw, 75px);
+
+    letter-spacing: -4px;
+}
+
+.memory-heading h2 span {
+    font-family: "DM Mono", monospace;
+
+    font-size: .35em;
+
+    color: #ff1688;
+
+    letter-spacing: 2px;
+
+    vertical-align: middle;
+
+    text-shadow: 0 0 20px #ff1688;
+}
+
+.memory-heading p {
+    margin-top: 10px;
+
+    color: rgba(255,255,255,.45);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+.photo-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+.photo-frame {
+    position: relative;
+
+    height: min(53vh, 470px);
+
+    overflow: hidden;
+
+    background: #111;
+
+    border-radius: 5px;
+
+    border: 1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.5);
+
+    transition:
+        transform .6s cubic-bezier(.2,.8,.2,1),
+        box-shadow .6s;
+
+    animation: photoReveal .9s both;
+}
+
+.photo-b {
+    animation-delay: .15s;
+
+    transform: translateY(15px);
+}
+
+.photo-c {
+    animation-delay: .3s;
+
+    transform: translateY(30px);
+}
+
+.photo-frame:hover {
+    transform:
+        translateY(-12px)
+        scale(1.02);
+
+    box-shadow:
+        0 30px 80px rgba(255,0,128,.15);
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 1s ease;
+}
+
+.photo-frame:hover img {
+    transform: scale(1.08);
+}
+
+.photo-frame::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.5),
+            transparent 40%
+        );
+
+    pointer-events: none;
+}
+
+.photo-number {
+    position: absolute;
+
+    top: 15px;
+    left: 15px;
+
+    z-index: 5;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    padding: 7px 10px;
+
+    background: rgba(0,0,0,.55);
+
+    border: 1px solid rgba(255,255,255,.2);
+
+    backdrop-filter: blur(8px);
+}
+
+@keyframes photoReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(70px)
+            scale(.94);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =====================================================
+   FINAL
+===================================================== */
+
+.scene-8 {
+    background:
+        radial-gradient(
+            circle at center,
+            #250018,
+            #040004 65%
+        );
+}
+
+.final-stars {
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            white 1px,
+            transparent 1px
+        );
+
+    background-size: 80px 80px;
+
+    opacity: .25;
+
+    animation: starMove 15s linear infinite;
+}
+
+@keyframes starMove {
+
+    to {
+        transform: translateY(-80px);
+    }
+
+}
+
+.final-content {
+    position: relative;
+
+    z-index: 10;
+
+    text-align: center;
+}
+
+.final-small {
+    margin: 20px 0;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 4px;
+
+    color: rgba(255,255,255,.45);
+}
+
+.final-content h2 {
+    font-size: clamp(55px, 10vw, 125px);
+
+    line-height: .78;
+
+    letter-spacing: -7px;
+}
+
+.final-content h2 span {
+    color: #ff1688;
+
+    text-shadow:
+        0 0 30px #ff1688,
+        0 0 80px rgba(255,0,128,.5);
+}
+
+.final-name {
+    margin-top: 25px;
+
+    font-size: clamp(70px, 13vw, 170px);
+
+    font-weight: 900;
+
+    letter-spacing: -8px;
+
+    color: white;
+
+    text-shadow:
+        0 0 20px white,
+        0 0 60px rgba(255,255,255,.4);
+
+    animation: nameGlow 2s infinite alternate;
+}
+
+@keyframes nameGlow {
+
+    to {
+        color: #ffb3d6;
+
+        text-shadow:
+            0 0 20px #ff1688,
+            0 0 70px #ff1688;
+    }
+
+}
+
+.heart {
+    color: #ff1688;
+
+    font-size: 28px;
+
+    margin: 5px;
+
+    animation: heartBeat 1s infinite;
+}
+
+@keyframes heartBeat {
+
+    50% {
+        transform: scale(1.3);
+    }
+
+}
+
+.final-message {
+    margin-top: 20px;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    color: rgba(255,255,255,.55);
+}
+
+.final-signature {
+    margin-top: 30px;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 4px;
+
+    color: rgba(255,255,255,.3);
+}
+
+
+/* =====================================================
+   FIREWORKS
+===================================================== */
+
+.firework {
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow: 0 0 10px white;
+
+    animation: firework 2.5s infinite;
+}
+
+.fw1 {
+    left: 15%;
+    top: 25%;
+}
+
+.fw2 {
+    right: 15%;
+    top: 20%;
+
+    animation-delay: .8s;
+}
+
+.fw3 {
+    right: 25%;
+    bottom: 25%;
+
+    animation-delay: 1.5s;
+}
+
+.firework i {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 3px;
+    height: 55px;
+
+    transform-origin: 50% 0;
+
+    background: linear-gradient(
+        white,
+        transparent
+    );
+}
+
+.firework i:nth-child(1) {
+    transform: rotate(0deg);
+}
+
+.firework i:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+.firework i:nth-child(3) {
+    transform: rotate(90deg);
+}
+
+.firework i:nth-child(4) {
+    transform: rotate(135deg);
+}
+
+.firework i:nth-child(5) {
+    transform: rotate(180deg);
+}
+
+.firework i:nth-child(6) {
+    transform: rotate(225deg);
+}
+
+.firework i:nth-child(7) {
+    transform: rotate(270deg);
+}
+
+.firework i:nth-child(8) {
+    transform: rotate(315deg);
+}
+
+@keyframes firework {
+
+    0%,
+    20% {
+        transform: scale(0);
+
+        opacity: 0;
+    }
+
+    40% {
+        transform: scale(.5);
+
+        opacity: 1;
+    }
+
+    65% {
+        transform: scale(1.3);
+
+        opacity: .8;
+    }
+
+    100% {
+        transform: scale(1.5);
+
+        opacity: 0;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .top-ui {
+        top: 18px;
+        left: 18px;
+        right: 18px;
+    }
+
+    .progress {
+        top: 43px;
+
+        left: 18px;
+        right: 18px;
+    }
+
+    .brand {
+        font-size: 7px;
+
+        letter-spacing: 2px;
+    }
+
+    .counter {
+        font-size: 8px;
+    }
+
+    .music-indicator {
+        left: 18px;
+        bottom: 23px;
+    }
+
+    .next-button {
+        right: 18px;
+        bottom: 18px;
+
+        height: 46px;
+
+        padding: 0 14px;
+
+        gap: 10px;
+    }
+
+    .next-text {
+        font-size: 8px;
+
+        letter-spacing: 2px;
+    }
+
+    .next-arrow {
+        width: 22px;
+        height: 22px;
+    }
+
+
+    /* INTRO */
+
+    .hero-title {
+        font-size: 67px;
+
+        letter-spacing: -5px;
+    }
+
+    .hero-description {
+        font-size: 12px;
+    }
+
+    .hero-orbit {
+        width: 220px;
+        height: 220px;
+    }
+
+
+    /* DJ */
+
+    .dj-content h2 {
+        font-size: 48px;
+    }
+
+    .dj-machine {
+        height: 160px;
+
+        transform: scale(.62);
+
+        margin:
+            0
+            auto
+            -5px;
+    }
+
+    .equalizer {
+        height: 35px;
+    }
+
+
+    /* LIGHTNING */
+
+    .thunder-symbol {
+        font-size: 75px;
+    }
+
+    .thunder-content h2 {
+        font-size: 58px;
+    }
+
+
+    /* LASER */
+
+    .laser-content h2 {
+        font-size: 43px;
+    }
+
+
+    /* BASS */
+
+    .bass-content h2 {
+        font-size: 50px;
+    }
+
+    .disco {
+        width: 75px;
+        height: 75px;
+
+        top: 10%;
+    }
+
+
+    /* MEMORIES */
+
+    .memory-content {
+        width: 90vw;
+
+        padding-bottom: 25px;
+    }
+
+    .memory-heading {
+        margin-bottom: 15px;
+    }
+
+    .memory-heading h2 {
+        font-size: 42px;
+    }
+
+    .memory-heading p {
+        font-size: 10px;
+    }
+
+    .photo-grid {
+        gap: 7px;
+    }
+
+    .photo-frame {
+        height: 43vh;
+
+        border-radius: 4px;
+    }
+
+    .photo-number {
+        top: 7px;
+        left: 7px;
+
+        padding: 5px 7px;
+
+        font-size: 7px;
+    }
+
+
+    /* FINAL */
+
+    .final-content h2 {
+        font-size: 65px;
+
+        letter-spacing: -5px;
+    }
+
+    .final-name {
+        font-size: 90px;
+
+        letter-spacing: -5px;
+    }
+
+    .final-message {
+        font-size: 11px;
+    }
+
+    .final-signature {
+        font-size: 7px;
+
+        letter-spacing: 2px;
+    }
+
+}

@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>For Om — Birthday Night</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================
+         AUDIO
+    ====================================== -->
+
+    <audio id="music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <!-- =====================================
+         GLOBAL BACKGROUND
+    ====================================== -->
+
+    <div class="noise"></div>
+
+    <div class="ambient ambient-1"></div>
+    <div class="ambient ambient-2"></div>
+    <div class="ambient ambient-3"></div>
+
+
+    <!-- =====================================
+         TOP UI
+    ====================================== -->
+
+    <div class="top-ui">
+
+        <div class="brand">
+            <span class="brand-dot"></span>
+            BIRTHDAY NIGHT
+        </div>
+
+        <div class="counter">
+            <span id="currentNumber">01</span>
+            <span class="counter-line"></span>
+            <span>08</span>
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         PROGRESS
+    ====================================== -->
+
+    <div class="progress">
+
+        <div class="progress-line">
+
+            <div
+                class="progress-fill"
+                id="progressFill"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         SCENE 1
+    ====================================== -->
+
+    <main>
+
+        <section
+            class="scene scene-1 active"
+            data-scene="1"
+        >
+
+            <div class="hero-glow"></div>
+
+            <div class="hero-content">
+
+                <div class="eyebrow reveal">
+                    TONIGHT • ONE SPECIAL NIGHT
+                </div>
+
+                <div class="tiny-line"></div>
+
+                <p class="pre-title reveal">
+                    THIS NIGHT
+                </p>
+
+                <h1 class="hero-title reveal">
+                    IS FOR
+                    <span>OM</span>
+                </h1>
+
+                <p class="hero-description reveal">
+                    Music. Memories. Lights.
+                    <br>
+                    And one unforgettable surprise.
+                </p>
+
+                <div class="hero-orbit">
+
+                    <div class="orbit-ring ring-1"></div>
+                    <div class="orbit-ring ring-2"></div>
+
+                    <div class="orbit-name">
+                        O
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="scroll-hint">
+                <span>PRESS NEXT TO ENTER</span>
+                <div class="scroll-arrow">↓</div>
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             SCENE 2 — DJ
+        ====================================== -->
+
+        <section
+            class="scene scene-2"
+            data-scene="2"
+        >
+
+            <div class="dj-lights">
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+            <div class="dj-content">
+
+                <div class="section-label">
+                    02 / DJ NIGHT
+                </div>
+
+                <h2>
+                    LET THE
+                    <br>
+                    <strong>BEAT</strong>
+                    BEGIN
+                </h2>
+
+                <p class="scene-copy">
+                    The speakers are ready.
+                    <br>
+                    The lights are alive.
+                </p>
+
+
+                <!-- DJ MACHINE -->
+
+                <div class="dj-machine">
+
+                    <div class="deck deck-left">
+
+                        <div class="vinyl">
+
+                            <div class="vinyl-grooves"></div>
+
+                            <div class="vinyl-center">
+                                OM
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mixer">
+
+                        <div class="mixer-screen">
+                            <span>LIVE</span>
+                            <strong>OM</strong>
+                        </div>
+
+                        <div class="mixer-knobs">
+
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+
+                        </div>
+
+                        <div class="mixer-sliders">
+
+                            <b></b>
+                            <b></b>
+                            <b></b>
+                            <b></b>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="deck deck-right">
+
+                        <div class="vinyl">
+
+                            <div class="vinyl-grooves"></div>
+
+                            <div class="vinyl-center">
+                                ♥
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EQUALIZER -->
+
+                <div class="equalizer">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             SCENE 3 — LIGHTNING
+        ====================================== -->
+
+        <section
+            class="scene scene-3"
+            data-scene="3"
+        >
+
+            <div class="storm-clouds"></div>
+
+            <div class="lightning-bolt bolt-a"></div>
+            <div class="lightning-bolt bolt-b"></div>
+
+            <div class="thunder-content">
+
+                <div class="section-label">
+                    03 / THUNDER
+                </div>
+
+                <div class="thunder-symbol">
+                    ⚡
+                </div>
+
+                <h2>
+                    FEEL THE
+                    <br>
+                    <strong>ENERGY</strong>
+                </h2>
+
+                <p>
+                    When the beat drops,
+                    <br>
+                    everything changes.
+                </p>
+
+            </div>
+
+            <div class="flash"></div>
+
+        </section>
+
+
+        <!-- =====================================
+             SCENE 4 — LASERS
+        ====================================== -->
+
+        <section
+            class="scene scene-4"
+            data-scene="4"
+        >
+
+            <div class="laser-stage">
+
+                <div class="laser-beam l1"></div>
+                <div class="laser-beam l2"></div>
+                <div class="laser-beam l3"></div>
+                <div class="laser-beam l4"></div>
+                <div class="laser-beam l5"></div>
+                <div class="laser-beam l6"></div>
+                <div class="laser-beam l7"></div>
+
+            </div>
+
+            <div class="laser-floor"></div>
+
+            <div class="laser-content">
+
+                <div class="section-label">
+                    04 / LIGHTS
+                </div>
+
+                <h2>
+                    WELCOME TO
+                    <br>
+                    <strong>THE LASER ROOM</strong>
+                </h2>
+
+                <p>
+                    Lights everywhere.
+                    <br>
+                    Tonight has no limits.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             SCENE 5 — BASS DROP
+        ====================================== -->
+
+        <section
+            class="scene scene-5"
+            data-scene="5"
+        >
+
+            <div class="bass-circle circle-1"></div>
+            <div class="bass-circle circle-2"></div>
+            <div class="bass-circle circle-3"></div>
+
+            <div class="disco">
+
+                <div class="disco-grid"></div>
+
+                <div class="disco-highlight"></div>
+
+            </div>
+
+            <div class="fire-particle fp1">✦</div>
+            <div class="fire-particle fp2">✧</div>
+            <div class="fire-particle fp3">✦</div>
+            <div class="fire-particle fp4">✧</div>
+            <div class="fire-particle fp5">✦</div>
+            <div class="fire-particle fp6">✧</div>
+
+            <div class="bass-content">
+
+                <div class="section-label">
+                    05 / BASS DROP
+                </div>
+
+                <div class="fire-icon">
+                    🔥
+                </div>
+
+                <h2>
+                    THIS NIGHT
+                    <br>
+                    IS
+                    <strong>ON FIRE</strong>
+                </h2>
+
+                <div class="bass-line">
+                    DROP
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             SCENE 6 — MEMORIES 1
+        ====================================== -->
+
+        <section
+            class="scene scene-6 memory-scene"
+            data-scene="6"
+        >
+
+            <div class="memory-bg"></div>
+
+            <div class="memory-content">
+
+                <div class="memory-heading">
+
+                    <div class="section-label">
+                        06 / MEMORIES
+                    </div>
+
+                    <h2>
+                        MOMENTS
+                        <span>01</span>
+                    </h2>
+
+                    <p>
+                        A few frames from
+                        <br>
+                        an unforgettable story.
+                    </p>
+
+                </div>
+
+
+                <div class="photo-grid">
+
+                    <div class="photo-frame photo-a">
+
+                        <div class="photo-number">
+                            01
+                        </div>
+
+                        <img
+                            src="images/photo1.jpg"
+                            alt="Memory 1"
+                        >
+
+                    </div>
+
+
+                    <div class="photo-frame photo-b">
+
+                        <div class="photo-number">
+                            02
+                        </div>
+
+                        <img
+                            src="images/photo2.jpg"
+                            alt="Memory 2"
+                        >
+
+                    </div>
+
+
+                    <div class="photo-frame photo-c">
+
+                        <div class="photo-number">
+                            03
+                        </div>
+
+                        <img
+                            src="images/photo3.jpg"
+                            alt="Memory 3"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             SCENE 7 — MEMORIES 2
+        ====================================== -->
+
+        <section
+            class="scene scene-7 memory-scene"
+            data-scene="7"
+        >
+
+            <div class="memory-bg memory-bg-2"></div>
+
+            <div class="memory-content">
+
+                <div class="memory-heading">
+
+                    <div class="section-label">
+                        07 / MEMORIES
+                    </div>
+
+                    <h2>
+                        MOMENTS
+                        <span>02</span>
+                    </h2>
+
+                    <p>
+                        Six photographs.
+                        <br>
+                        Thousands of memories.
+                    </p>
+
+                </div>
+
+
+                <div class="photo-grid">
+
+                    <div class="photo-frame photo-a">
+
+                        <div class="photo-number">
+                            04
+                        </div>
+
+                        <img
+                            src="images/photo4.jpg"
+                            alt="Memory 4"
+                        >
+
+                    </div>
+
+
+                    <div class="photo-frame photo-b">
+
+                        <div class="photo-number">
+                            05
+                        </div>
+
+                        <img
+                            src="images/photo5.jpg"
+                            alt="Memory 5"
+                        >
+
+                    </div>
+
+
+                    <div class="photo-frame photo-c">
+
+                        <div class="photo-number">
+                            06
+                        </div>
+
+                        <img
+                            src="images/photo6.jpg"
+                            alt="Memory 6"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             SCENE 8 — FINAL
+        ====================================== -->
+
+        <section
+            class="scene scene-8"
+            data-scene="8"
+        >
+
+            <div class="final-stars"></div>
+
+            <!-- FIREWORKS -->
+
+            <div class="firework fw1">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
+
+            <div class="firework fw2">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
+
+            <div class="firework fw3">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
+
+
+            <div class="final-content">
+
+                <div class="section-label">
+                    08 / THE FINALE
+                </div>
+
+                <p class="final-small">
+                    THERE'S ONLY ONE THING LEFT TO SAY
+                </p>
+
+                <h2>
+                    HAPPY
+                    <br>
+                    <span>BIRTHDAY</span>
+                </h2>
+
+                <div class="final-name">
+                    OM
+                </div>
+
+                <div class="heart">
+                    ♥
+                </div>
+
+                <p class="final-message">
+                    Keep chasing the moments
+                    <br>
+                    that make life unforgettable.
+                </p>
+
+                <div class="final-signature">
+                    MADE WITH ❤️ JUST FOR YOU
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================
+         NEXT BUTTON
+    ====================================== -->
+
+    <button
+        class="next-button"
+        id="nextButton"
+        type="button"
+    >
+
+        <span class="next-text">
+            NEXT
+        </span>
+
+        <span class="next-arrow">
+            →
+        </span>
+
+    </button>
+
+
+    <!-- =====================================
+         MUSIC INDICATOR
+    ====================================== -->
+
+    <div
+        class="music-indicator"
+        id="musicIndicator"
+    >
+
+        <span class="music-bars">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+        </span>
+
+        <span>
+            MUSIC
+        </span>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
